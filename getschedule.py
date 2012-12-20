@@ -38,5 +38,3 @@ for i in range(len(teams)):
     for x in range(len(teams)):
         if i != x and teams[x] not in conflicts[teams[i]]:
             good[teams[i]].append(teams[x])
-
-print good['1306']

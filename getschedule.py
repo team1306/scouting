@@ -3,6 +3,7 @@ from lxml import html
 import sys
 
 url = sys.argv[1]
+team = sys.argv[2]
 page = html.fromstring(urllib.urlopen(url).read())
 
 l = []
@@ -39,4 +40,4 @@ for i in range(len(teams)):
         if i != x and teams[x] not in conflicts[teams[i]]:
             good[teams[i]].append(teams[x])
 
-print good['1306']
+print good[team]

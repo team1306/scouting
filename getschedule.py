@@ -1,7 +1,8 @@
 import urllib
 from lxml import html
+import sys
 
-url = "http://www2.usfirst.org/2012comp/events/WI/schedulequal.html"
+url = sys.argv[1]
 page = html.fromstring(urllib.urlopen(url).read())
 
 l = []

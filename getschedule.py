@@ -3,7 +3,6 @@ from lxml import html
 import sys
 
 url = sys.argv[1]
-team = sys.argv[2]
 page = html.fromstring(urllib.urlopen(url).read())
 
 l = []
@@ -32,7 +31,7 @@ for i in range(len(teams)):
             for y in range(2,8):
                 if matches[x][y] not in conflicts[teams[i]]:
                     conflicts[teams[i]].append(matches[x][y])
-            
+
 good = {}
 for i in range(len(teams)):
     good[teams[i]] = []
@@ -40,4 +39,9 @@ for i in range(len(teams)):
         if i != x and teams[x] not in conflicts[teams[i]]:
             good[teams[i]].append(teams[x])
 
-print good[team]
+times = {}
+for i in range(len(teams)):
+    times[teams[i]] = []
+    for x in range(len(matches)):
+        if teams[i] in matches[x][2:8]:
+            times[teams[i]].append(matches[x][0])

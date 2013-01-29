@@ -52,3 +52,4 @@ for i in range(len(teams)):
     for x in range(len(matches)):
         if teams[i] in matches[x][2:8]:
             teammatches[teams[i]].append(matches[x][1]) # Appends match number to dictionary
+

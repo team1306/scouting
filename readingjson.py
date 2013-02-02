@@ -1,8 +1,11 @@
 import json
+import sys
 
-f = open('exampleData.json')
-lines = f.readlines()
-f.close()
+jsonFile = sys.argv[1]
+
+jsonFileLines = open(jsonFile)
+lines = jsonFileLines.readlines()
+jsonFileLines.close()
 
 s = ""
 for line in lines:

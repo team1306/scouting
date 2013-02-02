@@ -10,7 +10,7 @@ for line in lines:
 
 dictionary = (json.loads(s)) #this is the dictionary
 
-dictionarylength = (len(dictionary["data"])) #number of items in dictionary
+dictionarylength = (len(dictionary["data"]))
 x = 0
 temporary = [] #add up a teams points per round here temporarily
 teampoints = [] #a big list with all teams and their average points
@@ -18,11 +18,12 @@ teampoints = [] #a big list with all teams and their average points
 for team in dictionary["data"]:
     for rnd in dictionary["data"][team]:
         temporary.append(int(rnd["climberpts"])+int(rnd["shootingpts"]))
+    teampoints.append([team, sum(temporary)/len(temporary)])
+    temporary = []
 
-print temporary
+teampoints.sort(key=lambda x: x[1]) #this does the sorting
 
+print teampoints
 
                        
 #print(d["data"]["1306"][0]["climberpts"]) #getting specific data
-
-string = "12"

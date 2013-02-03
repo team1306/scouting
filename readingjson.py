@@ -21,7 +21,7 @@ teampoints = [] #a big list with all teams and their average points
 for team in dictionary["data"]:
     for rnd in dictionary["data"][team]:
         temporary.append(int(rnd["climberpts"])+int(rnd["shootingpts"]))
-    teampoints.append([team, sum(temporary)/len(temporary)])
+    teampoints.append([int(team), sum(temporary)/len(temporary)])
     temporary = []
 
 teampoints.sort(key=lambda x: x[1]) #this does the sorting

@@ -24,7 +24,7 @@ We plan to expand it to instead take a list of teams and output an array contain
 
 ### readingjson.py
 
-`readingjson.py` takes the JSON that is produced by the aformentioned `csvtojson.py` and runs it through a scoring algorithm, then sorts the results by the score according to the algorithm.
+`readingjson.py` takes the JSON that is produced by the aformentioned `csvtojson.py` and runs it through a scoring algorithm, then sorts the results by the score according to the algorithm. It uses argparse to have flags with arguments, so `-f` specifies the input JSON file, `-s` specifies the shooting point weight, and `-c` specifies the climbing point weight.
 
 ### validate.py
 

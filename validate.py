@@ -17,8 +17,11 @@ temporary = [] #add up a teams points per round here temporarily
 teampoints = [] #a big list with all teams and their average points
 
 for team in dictionary["data"]:
+    # We could add a teams dictionary and have it say when teams don't exist.
     for rnd in dictionary["data"][team]:
-        climberpts = int(rnd["climberpts"])
-        # assert (climberpts == 0 or climberpts == 10 or climberpts == 20 or climberpts == 30),"Climber points are invalid! Team %d, round %d." % (int(team), int(rnd["roundnumber"]))
-        if (climberpts != 0 and climberpts != 10 and climberpts != 20 and climberpts != 30):
-            print "Climber points are invalid! Team %d, round %d." % (int(team), int(rnd["roundnumber"]))
+        # Climber points can now only be valid values by the sheet.
+        # Shooting points cannot be validated.
+        # Round number could be validated as needing to be a legal round number, but that's silly since round numbers don't actually matter.
+        # Autonomous points might be validatable, but we will have to consider whether it's worth it.
+        break
+        

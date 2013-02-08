@@ -28,4 +28,4 @@ We plan to expand it to instead take a list of teams and output an array contain
 
 ### validate.py
 
-`validate.py` validates the data in the file used as an argument. Currently, it makes sure the climbing points are a possible score, though we'll expand the validation as necessary.
+`validate.py` validates the data in the file used as an argument.

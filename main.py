@@ -1,4 +1,7 @@
-import csvtojson, sys
+import csvtojson, sys, argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--file", 
 
 if len(sys.argv) > 1:
     f = sys.argv[1]

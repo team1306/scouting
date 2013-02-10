@@ -23,13 +23,13 @@ for line in lines:
 dictionary = (json.loads(s)) #this is the dictionary
 dictionarylength = (len(dictionary["data"]))
 
-highPoints = int(dictionary["data"]["1306"][0]["highshots"])*3
-medPoints = int(dictionary["data"]["1306"][0]["medshots"])*2
-lowPoints = int(dictionary["data"]["1306"][0]["lowshots"])
+highPoints = int(dictionary["data"]["1306"][0]["telehighgoals"])*3
+medPoints = int(dictionary["data"]["1306"][0]["telemedgoals"])*2
+lowPoints = int(dictionary["data"]["1306"][0]["telelowgoals"])
 
-highPointsAuto = int(dictionary["data"]["1306"][0]["highshotsauto"])*6
-medPointsAuto = int(dictionary["data"]["1306"][0]["medshotsauto"])*5
-lowPointsAuto = int(dictionary["data"]["1306"][0]["lowshotsauto"])*4
+highPointsAuto = int(dictionary["data"]["1306"][0]["autohighgoals"])*6
+medPointsAuto = int(dictionary["data"]["1306"][0]["automedgoals"])*5
+lowPointsAuto = int(dictionary["data"]["1306"][0]["autolowgoals"])*4
 
 actualPoints = highPoints+medPoints+lowPoints+highPointsAuto+medPointsAuto+lowPointsAuto
 	

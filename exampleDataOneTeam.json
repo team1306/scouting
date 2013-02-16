@@ -41,7 +41,13 @@
  			"climberpts",
  			"roundnumber",
  			"shootingpts",
- 			"teamnumber"
+ 			"teamnumber",
+ 			"telehighgoals",
+ 			"telemedgoals",
+ 			"telelowgoals",
+ 			"autohighgoals",
+ 			"automedgoals",
+ 			"autolowgoals"
  		 ]
 
 

@@ -28,9 +28,21 @@ temporary = [] #add up a teams points per round here temporarily
 teampoints = [] #a big list with all teams and their average points
 
 for team in dictionary["data"]:
-    for rnd in dictionary["data"][team]:
+    print team
+    for rnd in dictionary["data"][str(team)]:
+        print rnd
         climberTotal = int(rnd["climberpts"])*climberWeight
-        shooterTotal = int(rnd["shootingpts"])*shooterWeight
+        
+        
+        highPoints = int(rnd["telehighgoals"])*3
+	medPoints = int(rnd["telemedgoals"])*2
+	lowPoints = int(rnd["telelowgoals"])
+
+	highPointsAuto = int(rnd["autohighgoals"])*6
+	medPointsAuto = int(rnd["automedgoals"])*5
+	lowPointsAuto = int(rnd["autolowgoals"])*4      
+        
+        shooterTotal = (highPoints+medPoints+lowPoints+highPointsAuto+medPointsAuto+lowPointsAuto)*shooterWeight
         temporary.append(climberTotal+shooterTotal)
     teampoints.append([int(team), sum(temporary)/len(temporary)])
     temporary = []

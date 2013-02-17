@@ -24,8 +24,13 @@
 				"Name": "?",
 				"roundnumber": "02",
 				"Mark": "0",
-				"climberpts": "20",
-				"shootingpts": "05",
+				"climberpts": "30",
+				"telehighgoals": "10",
+				"telemedgoals": "10",
+				"telelowgoals": "10",
+				"autohighgoals": "10",
+				"automedgoals": "10",
+				"autolowgoals": "10",
 				"teamnumber": "1306",
 				"A:": ""
 			 }

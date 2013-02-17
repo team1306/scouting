@@ -35,7 +35,7 @@ def csvtojson(f):
     dic['data'] = data # add dictionary to data tag in the main one
         
 
-    return json.dumps(dic) # convert dictionary to JSON
+    return dic # convert dictionary to JSON
 
 if __name__ == "__main__":
     print csvtojson(sys.argv[1]) # run function with command line argument

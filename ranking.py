@@ -14,7 +14,7 @@ def rank(dictionary, climberWeight, shooterWeight):
         print team
         for rnd in dictionary["data"][str(team)]:
             print rnd
-            climberTotal = int(rnd["climberpts"])*climberWeight
+            climberTotal = int(rnd["climbingpts"][2:])*climberWeight
         
             
             highPoints = int(rnd["telehighgoals"])*3

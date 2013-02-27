@@ -10,9 +10,8 @@ def rank(dictionary, climberWeight, shooterWeight):
     teampoints = [] #a big list with all teams and their average points
 
     for team in dictionary["data"]:
-        print team
         for rnd in dictionary["data"][str(team)]:
-            print rnd
+            # rip all raw values from json and multiply by the scores
             climberTotal = int(rnd["climbingpts"][2:])*climberWeight
         
             
@@ -26,20 +25,23 @@ def rank(dictionary, climberWeight, shooterWeight):
             
             shooterTotal = (highPoints+medPoints+lowPoints+highPointsAuto+medPointsAuto+lowPointsAuto)*shooterWeight
             temporary.append(climberTotal+shooterTotal)
+        # add up team points
         teampoints.append([int(team), sum(temporary)/len(temporary)])
         temporary = []
-
+        # sort the teams based on cumulative score
         teampoints.sort(key=lambda x: x[1]) #this does the sorting
 
         return teampoints
 
 if __name__ == "__main__":
+    # tag parser for arguments normally passed to the function by main file
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file")
     parser.add_argument("-s", "--shooter", type=float, help="shooter weighting factor", default=1)
     parser.add_argument("-c", "--climber", type=float, help="climber weighting factor", default=1)
     args = parser.parse_args()
     
+    # parse file specified by argument -f
     jsonFile = args.file
     climberWeight = args.climber
     shooterWeight = args.shooter
@@ -53,4 +55,5 @@ if __name__ == "__main__":
         s += line.strip("\n")
     
     dictionary = (json.loads(s)) #this is the dictionary
+    # print the ranked teams
     print rank(dictionary, climberWeight, shooterWeight)

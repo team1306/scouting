@@ -8,8 +8,9 @@ def rank(dictionary, climberWeight, shooterWeight):
     x = 0
     temporary = [] #add up a teams points per round here temporarily
     teampoints = [] #a big list with all teams and their average points
-
+    print dictionary["data"]
     for team in dictionary["data"]:
+        print team
         for rnd in dictionary["data"][str(team)]:
             # rip all raw values from json and multiply by the scores
             climberTotal = int(rnd["climbingpts"][2:])*climberWeight
@@ -53,7 +54,8 @@ if __name__ == "__main__":
     s = ""
     for line in lines:
         s += line.strip("\n")
-    
+        
+    print s
     dictionary = (json.loads(s)) #this is the dictionary
     # print the ranked teams
     print rank(dictionary, climberWeight, shooterWeight)

@@ -1,4 +1,4 @@
-import json, sys
+import json, sys, argparse
 
 def csvtojson(f):
     f = open(f, 'r') # open file specified by the first argument to the function
@@ -10,7 +10,7 @@ def csvtojson(f):
 
     l = []
     for tag in csv[0]: # take only the tags that contain more than a single digit
-        if '.' not in tag:
+        if '.' not in tag or 'auto' in tag or 'foul' in tag:
             l.append(tag)
     dic = {'tags': l} # assign tags to the list of important tags
 
@@ -21,7 +21,7 @@ def csvtojson(f):
         d = {}
         i = 0
         while i < len(csv[0]): # loop through the tags and assign tags to their values
-            while '.' in csv[0][i]: # just keep going if the tag contains a '.'
+            while '.' in csv[0][i] and 'auto' not in csv[0][i] and 'foul' not in csv[0][i]: # just keep going if the tag contains a '.'
                 i += 1
             if i >= len(csv[0]): # make sure we haven't overshot the lenth of the list before trying to access it
                 break
@@ -38,5 +38,9 @@ def csvtojson(f):
     return dic # convert dictionary to JSON
 
 if __name__ == "__main__":
-    print csvtojson(sys.argv[1]) # run function with command line argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--file")
+    args = parser.parse_args()
+
+    print csvtojson(args.file) # run function with command line argument
 

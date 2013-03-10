@@ -32,7 +32,7 @@ def csvtojson(f):
         d = {}
         i = 0
         while i < len(csv[0]): # loop through the tags and assign tags to their values
-            while '.' in csv[0][i] and 'auto' not in csv[0][i] and 'foul' not in csv[0][i]: # just keep going if the tag contains a '.'
+            while csv[0][i] not in l: # just keep going if the tag isn't a good tag
                 i += 1
             if i >= len(csv[0]): # make sure we haven't overshot the lenth of the list before trying to access it
                 break

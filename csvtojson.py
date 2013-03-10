@@ -1,5 +1,18 @@
 import json, sys, argparse
 
+def goodtags(t):
+    good = []
+	for tag in t[0]:
+		if tag[-2:] == '.1': # if there is only once column in an AMCcode, it will just export <code>.1, but if there are multiple codes, they are aggregated in <code>
+			for i in range(len(t)):
+				if t[i] == tag[:-2]:
+                    good.append(t[i])
+                    break
+                if i == len(t):
+                    good.append(tag)
+    return good
+    
+
 def csvtojson(f):
     f = open(f, 'r') # open file specified by the first argument to the function
 

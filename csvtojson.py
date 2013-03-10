@@ -2,16 +2,16 @@ import json, sys, argparse
 
 def goodtags(t):
     good = []
-	for tag in t[0]:
-		if tag[-2:] == '.1': # if there is only once column in an AMCcode, it will just export <code>.1, but if there are multiple codes, they are aggregated in <code>
-			for i in range(len(t)):
-				if t[i] == tag[:-2]:
-                    good.append(t[i])
+    for tag in t[0]:
+        if tag[-2:-1] != '.':
+            good.append(tag)
+        if tag[-2:] == '.1': # if there is only once column in an AMCcode, it will just export <code>.1, but if there are multiple codes, they are aggregated in <code>
+            for i in range(len(t[0])):
+                if t[0][i] == tag[:-2]:
                     break
-                if i == len(t):
+                if i == len(t[0]) - 1:
                     good.append(tag)
     return good
-    
 
 def csvtojson(f):
     f = open(f, 'r') # open file specified by the first argument to the function
@@ -21,10 +21,8 @@ def csvtojson(f):
     for line in lines:
         csv.append(line.replace('"', '').replace('\n', '').split(';')) # read lines of CSV into 2 x (number of tags) list ignoring quotes and newlines and spliting at semicolons
 
-    l = []
-    for tag in csv[0]: # take only the tags that contain more than a single digit
-        if '.' not in tag or 'auto' in tag or 'foul' in tag:
-            l.append(tag)
+    l = goodtags(csv)
+    
     dic = {'tags': l} # assign tags to the list of important tags
 
     data = {} # create data dictionary to be indexed by team number and list of teams for which lists have already been created

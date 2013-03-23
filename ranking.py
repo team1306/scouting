@@ -13,16 +13,16 @@ def rank(dictionary, climberWeight, shooterWeight):
         print team
         for rnd in dictionary["data"][str(team)]:
             # rip all raw values from json and multiply by the scores
-            climberTotal = int(rnd["climbingpts"][2:])*climberWeight
+            climberTotal = int(rnd["climbingpts"])*climberWeight
         
             
             highPoints = int(rnd["telehighgoals"])*3
             medPoints = int(rnd["telemedgoals"])*2
             lowPoints = int(rnd["telelowgoals"])
             
-            highPointsAuto = int(rnd["autohighgoals"])*6
-            medPointsAuto = int(rnd["automedgoals"])*5
-            lowPointsAuto = int(rnd["autolowgoals"])*4      
+            highPointsAuto = int(rnd["autohighgoals.1"])*6
+            medPointsAuto = int(rnd["automedgoals.1"])*5
+            lowPointsAuto = int(rnd["autolowgoals.1"])*4      
             
             shooterTotal = (highPoints+medPoints+lowPoints+highPointsAuto+medPointsAuto+lowPointsAuto)*shooterWeight
             temporary.append(climberTotal+shooterTotal)
@@ -32,7 +32,7 @@ def rank(dictionary, climberWeight, shooterWeight):
         # sort the teams based on cumulative score
         teampoints.sort(key=lambda x: x[1]) #this does the sorting
 
-        return teampoints
+    return teampoints
 
 if __name__ == "__main__":
     # tag parser for arguments normally passed to the function by main file
